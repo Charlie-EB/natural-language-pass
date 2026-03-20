@@ -117,52 +117,68 @@ The page may include a brief note (tooltip or footer text) explaining:
 
 This guidance is optional for v1 — the entropy display alone is the minimum requirement.
 
-## Crack Time Estimate
+## Strength Description
 
 ### Purpose
 
-Display a human-friendly crack time alongside the entropy bits to help non-technical users understand passphrase strength. Inspired by [Hive Systems 2025 Password Table](https://www.hivesystems.com/blog/are-your-passwords-in-the-green).
+Display a plain-language description of passphrase strength alongside the entropy bits, so non-technical users can understand what their passphrase protects against. Based on threat assessments from the [Diceware FAQ](https://theworld.com/~reinhold/dicewarefaq.html#howlong) by Arnold Reinhold (who also documents the NLP word lists used by this app).
 
-### Attack Model
+### Rationale
 
-Assume a high-end consumer attack scenario:
+Precise crack-time or cost estimates (e.g., "76 days" or "$2,300") give a false sense of precision — they depend heavily on the hash algorithm, attacker hardware, and future advances. Threat tier descriptions are more honest and more useful: they tell the user *who* could realistically break their passphrase, not a specific number that may be wrong.
 
-- **Hardware**: 12x NVIDIA RTX 5090 GPUs (Hive Systems 2025 reference)
-- **Hash target**: bcrypt with cost factor 10
-- **Rate**: ~10 billion guesses/second (generous upper bound to keep estimates conservative)
-- **Method**: brute-force over the full combinatorial space (no dictionary shortcuts — our passphrases use cryptographic randomness)
+Our entropy calculation is exact (cryptographic randomness from known list sizes), but translating entropy into real-world breakability requires assumptions. Threat tiers acknowledge this uncertainty while still giving actionable guidance.
 
-Average crack time: `2^(bits-1) / guesses_per_second` (50% probability threshold).
+### Descriptions by Word Count
+
+| Words | Entropy | Description |
+|-------|---------|-------------|
+| 5     | ~57 bits | Breakable with a thousand or so PCs equipped with high-end graphics processors. Criminal gangs with botnets of infected PCs can marshal such resources. |
+| 6     | ~70 bits | May be breakable by an organization with a very large budget, such as a large country's security agency. |
+| 7     | ~80 bits | Unbreakable with any known technology, but may be within the range of large organizations by around 2030. |
+| 8     | ~93 bits | Completely secure through 2050. |
+| 9     | ~103 bits | Completely secure for the foreseeable future. Exceeds any projected computing capability. |
+| 10    | ~116 bits | Completely secure for the foreseeable future. Exceeds any projected computing capability. |
+
+Note: Descriptions for 5–8 words are adapted from the Diceware FAQ. Descriptions for 9–10 words extrapolate conservatively — at 103+ bits, brute-force is infeasible even with speculative future hardware.
 
 ### Display Format
 
-Show the crack time below the entropy line in plain language:
+Show the description below the entropy line:
 
 ```
 🔒 57 bits — Good
-⏱️ ~4.6 years to crack
+🛡️ Breakable with ~1,000 PCs with high-end GPUs (e.g., criminal botnets)
 ```
 
-Use human-friendly units, rounded:
-- Seconds, minutes, hours, days for short times
-- Years, thousands of years, millions of years, billions of years for long times
+```
+🔒 80 bits — Very Strong
+🛡️ Unbreakable with any known technology
+```
 
-### Crack Times by Word Count
+### Implementation
 
-| Words | Entropy | Approx. Crack Time (at 10B guesses/sec) |
-|-------|---------|----------------------------------------|
-| 5     | ~57 bits | ~4.6 years |
-| 6     | ~70 bits | ~18,700 years |
-| 7     | ~80 bits | ~19 million years |
-| 8     | ~93 bits | ~15 billion years |
-| 9     | ~103 bits | ~16 trillion years |
-| 10    | ~116 bits | ~13 quadrillion years |
+Map word count directly to a description string — no runtime calculation needed. The descriptions are static per word count.
+
+```js
+function getStrengthDescription(wordCount) {
+  const descriptions = {
+    5: "Breakable with ~1,000 PCs with high-end GPUs (e.g., criminal botnets)",
+    6: "May be breakable by a large country's security agency",
+    7: "Unbreakable with known technology; may be in range of large organizations by ~2030",
+    8: "Completely secure through 2050",
+    9: "Completely secure for the foreseeable future",
+    10: "Completely secure for the foreseeable future"
+  };
+  return descriptions[wordCount] || "";
+}
+```
 
 ### Caveats
 
-- The assumed rate is deliberately generous (real bcrypt cracking is slower) to keep displayed times conservative
-- Actual crack time depends on the hash algorithm used by the service storing the password — we can't control that
-- These estimates assume the attacker knows the word lists and generation pattern (Kerckhoffs's principle)
+- These descriptions assume the attacker knows the word lists and generation pattern (Kerckhoffs's principle)
+- Actual security also depends on the hash algorithm used by the service storing the password — stronger hashing (bcrypt, Argon2) makes cracking harder
+- Projections for far-future security have the most uncertainty
 
 ## Non-Goals
 

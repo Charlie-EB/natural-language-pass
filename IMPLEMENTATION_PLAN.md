@@ -66,14 +66,13 @@ All application source code lives in `docs/`. Nothing has been implemented yet. 
 - [x] Default: unchecked (lowercase)
 - Spec ref: `generation-algorithm.md` § Capitalization, `user-interface.md` § Capitalize Toggle
 
-## Priority 6: Crack Time Estimate Display
+## Priority 6: Strength Description Display
 
-- [x] Add `estimateCrackTime(bits)` function in `docs/app.js` — computes `2^(bits-1) / 10_000_000_000` seconds, returns human-friendly string (e.g., "~4.6 years", "~19 million years")
-- [x] Add `formatCrackTime(seconds)` helper to convert raw seconds into the best human-readable unit (seconds → minutes → hours → days → years → thousands/millions/billions/trillions/quadrillions of years)
-- [x] Update `formatEntropy()` or generate button handler to include crack time in the entropy display area
-- [x] Add a `#crack-time-display` element in `docs/index.html` below the entropy indicator (subdued/secondary style, matching entropy display)
-- [ ] Style the crack time display in `docs/style.css`
-- Spec ref: `entropy-and-security.md` § Crack Time Estimate
+- [ ] Replace `estimateCrackTime()` and `formatCrackTime()` with `getStrengthDescription(wordCount)` in `docs/app.js` — static map from word count (5–10) to a plain-language threat tier string
+- [ ] Update the generate button handler to display the strength description in `#crack-time-display`
+- [ ] Update the display element text/icon (use shield icon instead of timer: `🛡️`)
+- [ ] Style the strength description in `docs/style.css` — subdued/secondary style, matching entropy display
+- Spec ref: `entropy-and-security.md` § Strength Description
 
 ## Completed
 
