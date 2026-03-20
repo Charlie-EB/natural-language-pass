@@ -1,4 +1,4 @@
-  const jokes = [
+  const JOKES = [
     "I told my wife she was drawing her eyebrows too high. She looked surprised.",
     "Why don't scientists trust atoms? Because they make up everything.",
     "Did you hear about the restaurant on the moon? Great food, but no atmosphere.",
@@ -106,10 +106,6 @@
     "I tried to catch some fog earlier. I mist.",
   ];
 
-  function getJoke() {
-    const index = Math.floor(Math.random() * jokes.length);
-    return jokes[index];
-  }
 
 
  

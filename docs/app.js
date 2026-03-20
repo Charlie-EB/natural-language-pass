@@ -112,6 +112,16 @@ function generatePassphrase(wordCount, separator, capitalize) {
   return words.join(separator);
 }
 
+/**
+ * gets a random dad joke
+ * @returns {string} - a dad joke.
+ */
+function getJoke() {
+  const index = Math.floor(Math.random() * JOKES.length);
+  return JOKES[index];
+}
+
+
 document.addEventListener("DOMContentLoaded", function () {
   const wordCountSlider = /** @type {HTMLInputElement} */ (document.getElementById("word-count"));
   const wordCountLabel = document.getElementById("word-count-label");
@@ -121,6 +131,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const copyFeedback = document.getElementById("copy-feedback");
   const entropyDisplay = document.getElementById("entropy-display");
   const crackTimeDisplay = document.getElementById("crack-time-display");
+  const jokeDisplay = document.getElementById('joke-display')
+
+  // display the dad joke after page load
+  jokeDisplay.textContent = getJoke()
 
   /** @type {string} */
   var currentSeparator = " ";
@@ -152,6 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var bits = calculateEntropy(wordCount);
       crackTimeDisplay.textContent = "\u23F1\uFE0F " + estimateCrackTime(bits) + " to crack";
     }
+    jokeDisplay.textContent = getJoke()
   });
 
   // Copy button click: copy passphrase to clipboard with feedback
