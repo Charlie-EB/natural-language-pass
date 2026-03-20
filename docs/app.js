@@ -55,15 +55,19 @@ function formatEntropy(wordCount) {
  */
 function getStrengthDescription(wordCount) {
   /** @type {Record<number, string>} */
-  var descriptions = {
+  let descriptions = {
     5: "Breakable with ~1,000 PCs with high-end GPUs (e.g., criminal botnets)",
     6: "May be breakable by a large country\u2019s security agency",
     7: "Unbreakable with known technology, but may be in range of large organizations by ~2030",
-    8: "Completely secure through 2050",
-    9: "Completely secure for the foreseeable future. Exceeds any projected computing capability",
-    10: "Completely secure for the foreseeable future. Exceeds any projected computing capability"
+    8: "Completely secure through 2050, but",
+    9: "Completely secure for the foreseeable future. Exceeds any projected computing capability, but",
+    10: "Completely secure for the foreseeable future. Exceeds any projected computing capability, but"
   };
-  return descriptions[wordCount] || "";
+  let text = descriptions[wordCount] || "";
+  if (wordCount >= 8 && text) {
+    text += '<br><img src="https://imgs.xkcd.com/comics/security.png" alt="xkcd security comic" style="max-width:100%;margin-top:8px;">';
+  }
+  return text;
 }
 
 /**
@@ -149,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
     passphraseDisplay.textContent = generatePassphrase(wordCount, currentSeparator, capitalizeCheckbox.checked);
     entropyDisplay.textContent = formatEntropy(wordCount);
     if (crackTimeDisplay) {
-      crackTimeDisplay.textContent = "\u{1F6E1}\uFE0F " + getStrengthDescription(wordCount);
+      crackTimeDisplay.innerHTML = "\u{1F6E1}\uFE0F " + getStrengthDescription(wordCount);
     }
     jokeDisplay.textContent = getJoke()
   });
