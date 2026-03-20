@@ -37,6 +37,17 @@ function getStrengthLabel(bits) {
 }
 
 /**
+ * Formats the entropy display string for a given word count.
+ * @param {number} wordCount - Number of words (5–10).
+ * @returns {string} Formatted string, e.g. "🔒 57 bits — Good"
+ */
+function formatEntropy(wordCount) {
+  const bits = calculateEntropy(wordCount);
+  const label = getStrengthLabel(bits);
+  return `\u{1F512} ${Math.round(bits)} bits \u2014 ${label}`;
+}
+
+/**
  * Generates a passphrase with alternating adjective-noun pattern.
  * Odd positions (1st, 3rd, …) are adjectives; even positions (2nd, 4th, …) are nouns.
  * If wordCount is odd, the trailing word is an adjective.
