@@ -256,6 +256,10 @@ input[type="range"]:focus-visible {
   color: #666;
 }
 
+.joke {
+  margin-top: 50px
+}
+
 /* Responsive adjustments */
 @media (max-width: 480px) {
   body {
