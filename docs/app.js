@@ -48,36 +48,22 @@ function formatEntropy(wordCount) {
 }
 
 /**
- * Converts raw seconds into the best human-readable time unit.
- * @param {number} seconds - Time in seconds.
- * @returns {string} Human-friendly time string, e.g. "~4.6 years"
+ * Returns a plain-language threat tier description for the given word count.
+ * Static map based on Kerckhoffs's principle analysis (attacker knows word lists and pattern).
+ * @param {number} wordCount - Number of words (5–10).
+ * @returns {string}
  */
-function formatCrackTime(seconds) {
-  if (seconds < 60) return "~" + seconds.toFixed(1) + " seconds";
-  var minutes = seconds / 60;
-  if (minutes < 60) return "~" + minutes.toFixed(1) + " minutes";
-  var hours = minutes / 60;
-  if (hours < 24) return "~" + hours.toFixed(1) + " hours";
-  var days = hours / 24;
-  if (days < 365.25) return "~" + days.toFixed(1) + " days";
-  var years = days / 365.25;
-  if (years < 1000) return "~" + years.toFixed(1) + " years";
-  if (years < 1000000) return "~" + (years / 1000).toFixed(1) + " thousand years";
-  if (years < 1000000000) return "~" + (years / 1000000).toFixed(1) + " million years";
-  if (years < 1000000000000) return "~" + (years / 1000000000).toFixed(1) + " billion years";
-  if (years < 1000000000000000) return "~" + (years / 1000000000000).toFixed(1) + " trillion years";
-  return "~" + (years / 1000000000000000).toFixed(1) + " quadrillion years";
-}
-
-/**
- * Estimates the time to crack a passphrase with the given entropy,
- * assuming 10 billion guesses per second (bcrypt, 12× RTX 5090).
- * @param {number} bits - Entropy in bits.
- * @returns {string} Human-friendly crack time, e.g. "~4.6 years"
- */
-function estimateCrackTime(bits) {
-  var seconds = Math.pow(2, bits - 1) / 10000000000;
-  return formatCrackTime(seconds);
+function getStrengthDescription(wordCount) {
+  /** @type {Record<number, string>} */
+  var descriptions = {
+    5: "Breakable with ~1,000 PCs with high-end GPUs (e.g., criminal botnets)",
+    6: "May be breakable by a large country\u2019s security agency",
+    7: "Unbreakable with known technology, but may be in range of large organizations by ~2030",
+    8: "Completely secure through 2050",
+    9: "Completely secure for the foreseeable future. Exceeds any projected computing capability",
+    10: "Completely secure for the foreseeable future. Exceeds any projected computing capability"
+  };
+  return descriptions[wordCount] || "";
 }
 
 /**
@@ -163,8 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
     passphraseDisplay.textContent = generatePassphrase(wordCount, currentSeparator, capitalizeCheckbox.checked);
     entropyDisplay.textContent = formatEntropy(wordCount);
     if (crackTimeDisplay) {
-      var bits = calculateEntropy(wordCount);
-      crackTimeDisplay.textContent = "\u23F1\uFE0F " + estimateCrackTime(bits) + " to crack";
+      crackTimeDisplay.textContent = "\u{1F6E1}\uFE0F " + getStrengthDescription(wordCount);
     }
     jokeDisplay.textContent = getJoke()
   });
