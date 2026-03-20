@@ -59,9 +59,9 @@ function getStrengthDescription(wordCount) {
     5: "Breakable with ~1,000 PCs with high-end GPUs (e.g., criminal botnets)",
     6: "May be breakable by a large country\u2019s security agency",
     7: "Unbreakable with known technology, but may be in range of large organizations by ~2030",
-    8: "Completely secure through 2050, but",
-    9: "Completely secure for the foreseeable future. Exceeds any projected computing capability, but",
-    10: "Completely secure for the foreseeable future. Exceeds any projected computing capability, but"
+    8: "Completely secure through 2050, but the next weak link in the chain is you.",
+    9: "Completely secure for the foreseeable future. Exceeds any projected computing capability, but the next weak link in the chain is you.",
+    10: "Completely secure for the foreseeable future. Exceeds any projected computing capability, but the next weak link in the chain is you."
   };
   let text = descriptions[wordCount] || "";
   if (wordCount >= 8 && text) {
