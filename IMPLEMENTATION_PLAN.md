@@ -1,10 +1,10 @@
 # Implementation Plan
 
-All application source code lives in `src/`. Nothing has been implemented yet. The `src/` directory does not exist and must be created.
+All application source code lives in `docs/`. Nothing has been implemented yet. The `docs/` directory does not exist and must be created.
 
-## Priority 1: Word Lists — `src/words.js`
+## Priority 1: Word Lists — `docs/words.js`
 
-- [x] Create `src/` directory
+- [x] Create `docs/` directory
 - [x] Extract the 1,296 adjectives and 7,776 nouns from `nlp.html` into two global `const` arrays: `ADJECTIVES` and `NOUNS`
 - [x] Source data: `nlp.html` line 12 contains `var adjective_words` (1,296 entries) and line 14 contains `var noun_words` (7,776 entries) — extract and rename
 - [x] After extraction, validate array lengths: `ADJECTIVES.length === 1296` and `NOUNS.length === 7776`
@@ -13,7 +13,7 @@ All application source code lives in `src/`. Nothing has been implemented yet. T
 - [x] Use a script to parse the arrays from `nlp.html` (e.g., Python/Node to extract JSON arrays from the var declarations)
 - Spec ref: `generation-algorithm.md` § Word Lists, `tech-architecture.md` § Module Strategy, § Type Safety
 
-## Priority 2: Core Logic — `src/app.js`
+## Priority 2: Core Logic — `docs/app.js`
 
 - [x] Add `// @ts-check` at top of file and JSDoc annotations (`@param`, `@returns`) on all functions
 - [x] `secureRandomIndex(max)` — uses `crypto.getRandomValues()` with `Uint32Array(1)`; `Math.random()` is forbidden; returns `Math.floor((array[0] / 2**32) * max)`
@@ -29,7 +29,7 @@ All application source code lives in `src/`. Nothing has been implemented yet. T
   - [x] Auto-generate on page load with defaults (5 words, space separator)
 - Spec ref: `generation-algorithm.md`, `entropy-and-security.md`, `user-interface.md` § Behavior, `tech-architecture.md` § Type Safety
 
-## Priority 3: Page Markup — `src/index.html`
+## Priority 3: Page Markup — `docs/index.html`
 
 - [x] Single centered card/panel layout containing (top to bottom):
   1. Title/heading with brief tagline
@@ -39,12 +39,12 @@ All application source code lives in `src/`. Nothing has been implemented yet. T
   5. Passphrase display area (large, monospace, `aria-live="polite"` region)
   6. Copy button with adjacent feedback text span
   7. Entropy indicator (bits + strength label, subdued/secondary style)
-- [x] Script tags at end of body: `<script src="words.js"></script>` then `<script src="app.js"></script>` (no ES modules, no CORS issues)
+- [x] Script tags at end of body: `<script docs="words.js"></script>` then `<script docs="app.js"></script>` (no ES modules, no CORS issues)
 - [x] Link `style.css` in `<head>`
 - [x] Accessibility: `<label for="...">` on slider, descriptive button text, `aria-live="polite"` on passphrase output
 - Spec ref: `user-interface.md`, `tech-architecture.md` § File Structure
 
-## Priority 4: Styling — `src/style.css`
+## Priority 4: Styling — `docs/style.css`
 
 - [x] Clean, minimal aesthetic; no framework CSS
 - [x] Single centered card with `max-width` constraint (~500-600px), comfortable padding, slight shadow or border
@@ -58,21 +58,21 @@ All application source code lives in `src/`. Nothing has been implemented yet. T
 
 ## Priority 5: Capitalize Toggle
 
-- [x] Add `capitalizeWord(word)` function in `src/app.js` — returns word with first letter uppercased
+- [x] Add `capitalizeWord(word)` function in `docs/app.js` — returns word with first letter uppercased
 - [x] Update `generatePassphrase()` to accept a `capitalize` boolean parameter; when true, apply `capitalizeWord()` to each word before joining
-- [x] Add a checkbox input in `src/index.html` (id `capitalize`, label "Capitalize Words") in the options area near the separator picker
+- [x] Add a checkbox input in `docs/index.html` (id `capitalize`, label "Capitalize Words") in the options area near the separator picker
 - [x] Wire up the checkbox in the `DOMContentLoaded` handler — read its checked state when generating
-- [x] Style the checkbox in `src/style.css` to match the existing option controls
+- [x] Style the checkbox in `docs/style.css` to match the existing option controls
 - [x] Default: unchecked (lowercase)
 - Spec ref: `generation-algorithm.md` § Capitalization, `user-interface.md` § Capitalize Toggle
 
 ## Priority 6: Crack Time Estimate Display
 
-- [x] Add `estimateCrackTime(bits)` function in `src/app.js` — computes `2^(bits-1) / 10_000_000_000` seconds, returns human-friendly string (e.g., "~4.6 years", "~19 million years")
+- [x] Add `estimateCrackTime(bits)` function in `docs/app.js` — computes `2^(bits-1) / 10_000_000_000` seconds, returns human-friendly string (e.g., "~4.6 years", "~19 million years")
 - [x] Add `formatCrackTime(seconds)` helper to convert raw seconds into the best human-readable unit (seconds → minutes → hours → days → years → thousands/millions/billions/trillions/quadrillions of years)
 - [x] Update `formatEntropy()` or generate button handler to include crack time in the entropy display area
-- [x] Add a `#crack-time-display` element in `src/index.html` below the entropy indicator (subdued/secondary style, matching entropy display)
-- [ ] Style the crack time display in `src/style.css`
+- [x] Add a `#crack-time-display` element in `docs/index.html` below the entropy indicator (subdued/secondary style, matching entropy display)
+- [ ] Style the crack time display in `docs/style.css`
 - Spec ref: `entropy-and-security.md` § Crack Time Estimate
 
 ## Completed

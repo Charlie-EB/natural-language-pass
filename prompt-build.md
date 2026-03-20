@@ -6,7 +6,7 @@ You are an **orchestrator** working through a pre-built plan, one task per itera
 
 0a. Study the requirement specs in `specs/` with a subagent to learn the application specification.
 0b. Study `@IMPLEMENTATION_PLAN.md` to understand the current plan and pick the most important unchecked `[ ]` item.
-0c. For reference, all application source code is in `src/`.
+0c. For reference, all application source code is in `docs/`.
 
 ## Loop (ONE task per iteration — hard rule)
 
@@ -15,9 +15,9 @@ You are an **orchestrator** working through a pre-built plan, one task per itera
 1. **Pick** the most important unchecked `[ ]` item in `IMPLEMENTATION_PLAN.md`. That is your sole focus.
 2. **Search before coding** — spawn subagents to verify the item is actually needed (read the relevant code, check if already implemented). Do not assume functionality is missing. If already done, mark `[x]` and STOP.
 3. **Implement** — spawn a subagent to make the change. Give it the task description from `IMPLEMENTATION_PLAN.md`, the relevant file names, and any cross-cutting context. The subagent should read the relevant spec file(s) in `specs/` for details.
-4. **Validate** — spawn a subagent to open `src/index.html` in a browser-like check:
+4. **Validate** — spawn a subagent to open `docs/index.html` in a browser-like check:
    - Read the generated HTML/JS/CSS and verify it is syntactically valid.
-   - Check that `<script>` and `<link>` tags reference the correct filenames in `src/`.
+   - Check that `<script>` and `<link>` tags reference the correct filenames in `docs/`.
    - Verify no use of `Math.random()` in generation logic (must use `crypto.getRandomValues()`).
    If issues are found, fix them before proceeding.
 5. **Mark done** — change `[ ]` to `[x]` in `IMPLEMENTATION_PLAN.md`.

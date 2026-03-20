@@ -22,7 +22,7 @@ The app is a static site built with vanilla HTML, CSS, and JavaScript. No framew
 
 ```
 nl-passwords/
-├── src/
+├── docs/
 │   ├── index.html      # Main (and only) page
 │   ├── style.css       # All styles
 │   ├── words.js        # ADJECTIVES and NOUNS arrays
@@ -47,15 +47,15 @@ The existing `nlp.html` is a single 88KB file with everything inlined. The new a
 - **`style.css`** — Styles separated from markup for maintainability.
 - **`index.html`** — Clean markup with `<script>` and `<link>` tags.
 
-All source files live in `src/` to keep the project root clean.
+All source files live in `docs/` to keep the project root clean.
 
 ## Module Strategy
 
 Scripts are loaded via standard `<script>` tags in order:
 
 ```html
-<script src="words.js"></script>
-<script src="app.js"></script>
+<script docs="words.js"></script>
+<script docs="app.js"></script>
 ```
 
 `words.js` exposes `ADJECTIVES` and `NOUNS` as global constants. `app.js` references them directly. No module bundler, no ES modules (to avoid CORS issues when opening from filesystem).
@@ -99,7 +99,7 @@ No `tsconfig.json` or TypeScript compiler is required. Type annotations are pure
 
 ### GitHub Pages
 
-Configure GitHub Pages to serve from the `src/` folder on the `master` branch. `src/index.html` is the entry point.
+Configure GitHub Pages to serve from the `docs/` folder on the `master` branch. `docs/index.html` is the entry point.
 
 ## Browser Support
 
