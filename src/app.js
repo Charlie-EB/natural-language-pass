@@ -25,6 +25,18 @@ function calculateEntropy(wordCount) {
 }
 
 /**
+ * Returns a human-readable strength label for the given entropy.
+ * @param {number} bits - Entropy in bits.
+ * @returns {string}
+ */
+function getStrengthLabel(bits) {
+  if (bits >= 100) return "Excellent";
+  if (bits >= 80) return "Very Strong";
+  if (bits >= 60) return "Strong";
+  return "Good";
+}
+
+/**
  * Generates a passphrase with alternating adjective-noun pattern.
  * Odd positions (1st, 3rd, …) are adjectives; even positions (2nd, 4th, …) are nouns.
  * If wordCount is odd, the trailing word is an adjective.

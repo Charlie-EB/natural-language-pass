@@ -19,7 +19,7 @@ All application source code lives in `src/`. Nothing has been implemented yet. T
 - [x] `secureRandomIndex(max)` — uses `crypto.getRandomValues()` with `Uint32Array(1)`; `Math.random()` is forbidden; returns `Math.floor((array[0] / 2**32) * max)`
 - [x] `generatePassphrase(wordCount, separator)` — alternating adjective-noun pattern: adj at odd positions (1st, 3rd, …), noun at even positions (2nd, 4th, …); if N is odd, trailing word is an adjective
 - [x] `calculateEntropy(wordCount)` — computes `Math.ceil(wordCount/2) * Math.log2(ADJECTIVES.length) + Math.floor(wordCount/2) * Math.log2(NOUNS.length)` bits
-- [ ] `getStrengthLabel(bits)` — returns "Good" (bits < 60), "Strong" (60 <= bits < 80), "Very Strong" (80 <= bits < 100), "Excellent" (bits >= 100)
+- [x] `getStrengthLabel(bits)` — returns "Good" (bits < 60), "Strong" (60 <= bits < 80), "Very Strong" (80 <= bits < 100), "Excellent" (bits >= 100)
 - [ ] Entropy display format: `🔒 {rounded bits} bits — {label}` (per `entropy-and-security.md` § Format)
 - [ ] UI wiring on `DOMContentLoaded`:
   - [ ] Slider `input` event updates word-count label text (does NOT auto-regenerate passphrase)
