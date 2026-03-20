@@ -48,13 +48,11 @@ function formatEntropy(wordCount) {
 }
 
 /**
- * Estimates the time to crack a passphrase with the given entropy,
- * assuming 10 billion guesses per second (bcrypt, 12× RTX 5090).
- * @param {number} bits - Entropy in bits.
- * @returns {string} Human-friendly crack time, e.g. "~4.6 years"
+ * Converts raw seconds into the best human-readable time unit.
+ * @param {number} seconds - Time in seconds.
+ * @returns {string} Human-friendly time string, e.g. "~4.6 years"
  */
-function estimateCrackTime(bits) {
-  var seconds = Math.pow(2, bits - 1) / 10000000000;
+function formatCrackTime(seconds) {
   if (seconds < 60) return "~" + seconds.toFixed(1) + " seconds";
   var minutes = seconds / 60;
   if (minutes < 60) return "~" + minutes.toFixed(1) + " minutes";
@@ -69,6 +67,17 @@ function estimateCrackTime(bits) {
   if (years < 1000000000000) return "~" + (years / 1000000000).toFixed(1) + " billion years";
   if (years < 1000000000000000) return "~" + (years / 1000000000000).toFixed(1) + " trillion years";
   return "~" + (years / 1000000000000000).toFixed(1) + " quadrillion years";
+}
+
+/**
+ * Estimates the time to crack a passphrase with the given entropy,
+ * assuming 10 billion guesses per second (bcrypt, 12× RTX 5090).
+ * @param {number} bits - Entropy in bits.
+ * @returns {string} Human-friendly crack time, e.g. "~4.6 years"
+ */
+function estimateCrackTime(bits) {
+  var seconds = Math.pow(2, bits - 1) / 10000000000;
+  return formatCrackTime(seconds);
 }
 
 /**
