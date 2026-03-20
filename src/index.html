@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NL Passwords — Memorable Passphrase Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card">
+    <h1>NL Passwords</h1>
+    <p class="tagline">Generate memorable, secure passphrases</p>
+
+    <div class="control-group">
+      <label for="word-count" id="word-count-label">5 words</label>
+      <input type="range" id="word-count" min="5" max="10" value="5">
+    </div>
+
+    <fieldset class="separator-picker">
+      <legend>Separator</legend>
+      <label><input type="radio" name="separator" value=" " checked> Space</label>
+      <label><input type="radio" name="separator" value="-"> Hyphen</label>
+      <label><input type="radio" name="separator" value="."> Period</label>
+      <label><input type="radio" name="separator" value="_"> Underscore</label>
+      <label><input type="radio" name="separator" value=""> None</label>
+    </fieldset>
+
+    <button id="generate-btn" type="button">Generate Passphrase</button>
+
+    <div id="passphrase-display" aria-live="polite"></div>
+
+    <div class="copy-row">
+      <button id="copy-btn" type="button">Copy</button>
+      <span id="copy-feedback" aria-live="polite"></span>
+    </div>
+
+    <div id="entropy-display" class="entropy"></div>
+  </main>
+
+  <script src="words.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

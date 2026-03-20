@@ -31,7 +31,7 @@ All application source code lives in `src/`. Nothing has been implemented yet. T
 
 ## Priority 3: Page Markup — `src/index.html`
 
-- [ ] Single centered card/panel layout containing (top to bottom):
+- [x] Single centered card/panel layout containing (top to bottom):
   1. Title/heading with brief tagline
   2. Word count slider (`<input type="range" min="5" max="10" value="5">`) with `<label>` showing current value (e.g., "5 words")
   3. Separator picker (radio buttons): Space (default, checked), Hyphen, Period, Underscore, None — each with `name="separator"` and appropriate `value` attribute
@@ -39,9 +39,9 @@ All application source code lives in `src/`. Nothing has been implemented yet. T
   5. Passphrase display area (large, monospace, `aria-live="polite"` region)
   6. Copy button with adjacent feedback text span
   7. Entropy indicator (bits + strength label, subdued/secondary style)
-- [ ] Script tags at end of body: `<script src="words.js"></script>` then `<script src="app.js"></script>` (no ES modules, no CORS issues)
-- [ ] Link `style.css` in `<head>`
-- [ ] Accessibility: `<label for="...">` on slider, descriptive button text, `aria-live="polite"` on passphrase output
+- [x] Script tags at end of body: `<script src="words.js"></script>` then `<script src="app.js"></script>` (no ES modules, no CORS issues)
+- [x] Link `style.css` in `<head>`
+- [x] Accessibility: `<label for="...">` on slider, descriptive button text, `aria-live="polite"` on passphrase output
 - Spec ref: `user-interface.md`, `tech-architecture.md` § File Structure
 
 ## Priority 4: Styling — `src/style.css`
