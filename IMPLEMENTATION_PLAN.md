@@ -5,12 +5,12 @@ All application source code lives in `src/`. Nothing has been implemented yet. T
 ## Priority 1: Word Lists — `src/words.js`
 
 - [x] Create `src/` directory
-- [ ] Extract the 1,296 adjectives and 7,776 nouns from `nlp.html` into two global `const` arrays: `ADJECTIVES` and `NOUNS`
-- [ ] Source data: `nlp.html` line 12 contains `var adjective_words` (1,296 entries) and line 14 contains `var noun_words` (7,776 entries) — extract and rename
-- [ ] After extraction, validate array lengths: `ADJECTIVES.length === 1296` and `NOUNS.length === 7776`
-- [ ] Arrays are plain JS constants (no ES modules) loaded via `<script>` tag before `app.js`
-- [ ] Add `// @ts-check` at top of file and JSDoc `/** @type {string[]} */` annotation on each array
-- [ ] Use a script to parse the arrays from `nlp.html` (e.g., Python/Node to extract JSON arrays from the var declarations)
+- [x] Extract the 1,296 adjectives and 7,776 nouns from `nlp.html` into two global `const` arrays: `ADJECTIVES` and `NOUNS`
+- [x] Source data: `nlp.html` line 12 contains `var adjective_words` (1,296 entries) and line 14 contains `var noun_words` (7,776 entries) — extract and rename
+- [x] After extraction, validate array lengths: `ADJECTIVES.length === 1296` and `NOUNS.length === 7776`
+- [x] Arrays are plain JS constants (no ES modules) loaded via `<script>` tag before `app.js`
+- [x] Add `// @ts-check` at top of file and JSDoc `/** @type {string[]} */` annotation on each array
+- [x] Use a script to parse the arrays from `nlp.html` (e.g., Python/Node to extract JSON arrays from the var declarations)
 - Spec ref: `generation-algorithm.md` § Word Lists, `tech-architecture.md` § Module Strategy, § Type Safety
 
 ## Priority 2: Core Logic — `src/app.js`
