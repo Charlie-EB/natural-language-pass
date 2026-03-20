@@ -58,12 +58,12 @@ All application source code lives in `src/`. Nothing has been implemented yet. T
 
 ## Priority 5: Capitalize Toggle
 
-- [ ] Add `capitalizeWord(word)` function in `src/app.js` — returns word with first letter uppercased
-- [ ] Update `generatePassphrase()` to accept a `capitalize` boolean parameter; when true, apply `capitalizeWord()` to each word before joining
-- [ ] Add a checkbox input in `src/index.html` (id `capitalize`, label "Capitalize Words") in the options area near the separator picker
-- [ ] Wire up the checkbox in the `DOMContentLoaded` handler — read its checked state when generating
-- [ ] Style the checkbox in `src/style.css` to match the existing option controls
-- [ ] Default: unchecked (lowercase)
+- [x] Add `capitalizeWord(word)` function in `src/app.js` — returns word with first letter uppercased
+- [x] Update `generatePassphrase()` to accept a `capitalize` boolean parameter; when true, apply `capitalizeWord()` to each word before joining
+- [x] Add a checkbox input in `src/index.html` (id `capitalize`, label "Capitalize Words") in the options area near the separator picker
+- [x] Wire up the checkbox in the `DOMContentLoaded` handler — read its checked state when generating
+- [x] Style the checkbox in `src/style.css` to match the existing option controls
+- [x] Default: unchecked (lowercase)
 - Spec ref: `generation-algorithm.md` § Capitalization, `user-interface.md` § Capitalize Toggle
 
 ## Priority 6: Crack Time Estimate Display

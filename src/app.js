@@ -48,21 +48,33 @@ function formatEntropy(wordCount) {
 }
 
 /**
+ * Returns a word with its first letter uppercased.
+ * @param {string} word
+ * @returns {string}
+ */
+function capitalizeWord(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
+/**
  * Generates a passphrase with alternating adjective-noun pattern.
  * Odd positions (1st, 3rd, …) are adjectives; even positions (2nd, 4th, …) are nouns.
  * If wordCount is odd, the trailing word is an adjective.
  * @param {number} wordCount - Number of words (5–10).
  * @param {string} separator - Character(s) inserted between words.
+ * @param {boolean} capitalize - Whether to capitalize the first letter of each word.
  * @returns {string}
  */
-function generatePassphrase(wordCount, separator) {
+function generatePassphrase(wordCount, separator, capitalize) {
   const words = [];
   for (let i = 0; i < wordCount; i++) {
+    var word;
     if (i % 2 === 0) {
-      words.push(ADJECTIVES[secureRandomIndex(ADJECTIVES.length)]);
+      word = ADJECTIVES[secureRandomIndex(ADJECTIVES.length)];
     } else {
-      words.push(NOUNS[secureRandomIndex(NOUNS.length)]);
+      word = NOUNS[secureRandomIndex(NOUNS.length)];
     }
+    words.push(capitalize ? capitalizeWord(word) : word);
   }
   return words.join(separator);
 }
@@ -95,10 +107,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  var capitalizeCheckbox = /** @type {HTMLInputElement} */ (document.getElementById("capitalize"));
+
   // Generate button click: generate passphrase and update display + entropy
   generateBtn.addEventListener("click", function () {
     var wordCount = parseInt(wordCountSlider.value, 10);
-    passphraseDisplay.textContent = generatePassphrase(wordCount, currentSeparator);
+    passphraseDisplay.textContent = generatePassphrase(wordCount, currentSeparator, capitalizeCheckbox.checked);
     entropyDisplay.textContent = formatEntropy(wordCount);
   });
 

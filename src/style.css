@@ -142,6 +142,27 @@ input[type="range"]:focus-visible {
   cursor: pointer;
 }
 
+/* Capitalize toggle */
+.capitalize-toggle {
+  margin-bottom: 1.25rem;
+}
+
+.capitalize-toggle label {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #444;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  min-height: 44px;
+}
+
+.capitalize-toggle input[type="checkbox"] {
+  margin-right: 0.4rem;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
 /* Generate button */
 #generate-btn {
   display: block;
