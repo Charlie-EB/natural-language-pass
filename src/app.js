@@ -120,6 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const copyBtn = document.getElementById("copy-btn");
   const copyFeedback = document.getElementById("copy-feedback");
   const entropyDisplay = document.getElementById("entropy-display");
+  const crackTimeDisplay = document.getElementById("crack-time-display");
 
   /** @type {string} */
   var currentSeparator = " ";
@@ -147,6 +148,10 @@ document.addEventListener("DOMContentLoaded", function () {
     var wordCount = parseInt(wordCountSlider.value, 10);
     passphraseDisplay.textContent = generatePassphrase(wordCount, currentSeparator, capitalizeCheckbox.checked);
     entropyDisplay.textContent = formatEntropy(wordCount);
+    if (crackTimeDisplay) {
+      var bits = calculateEntropy(wordCount);
+      crackTimeDisplay.textContent = "Crack time: " + estimateCrackTime(bits);
+    }
   });
 
   // Copy button click: copy passphrase to clipboard with feedback

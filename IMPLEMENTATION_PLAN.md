@@ -70,7 +70,7 @@ All application source code lives in `src/`. Nothing has been implemented yet. T
 
 - [x] Add `estimateCrackTime(bits)` function in `src/app.js` — computes `2^(bits-1) / 10_000_000_000` seconds, returns human-friendly string (e.g., "~4.6 years", "~19 million years")
 - [x] Add `formatCrackTime(seconds)` helper to convert raw seconds into the best human-readable unit (seconds → minutes → hours → days → years → thousands/millions/billions/trillions/quadrillions of years)
-- [ ] Update `formatEntropy()` or generate button handler to include crack time in the entropy display area
+- [x] Update `formatEntropy()` or generate button handler to include crack time in the entropy display area
 - [ ] Add a `#crack-time-display` element in `src/index.html` below the entropy indicator (subdued/secondary style, matching entropy display)
 - [ ] Style the crack time display in `src/style.css`
 - Spec ref: `entropy-and-security.md` § Crack Time Estimate
