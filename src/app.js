@@ -12,6 +12,19 @@ function secureRandomIndex(max) {
 }
 
 /**
+ * Computes the entropy in bits for a passphrase of the given word count.
+ * Uses the alternating adjective-noun pattern: odd positions draw from
+ * ADJECTIVES, even positions draw from NOUNS.
+ * @param {number} wordCount - Number of words (5–10).
+ * @returns {number} Entropy in bits.
+ */
+function calculateEntropy(wordCount) {
+  const adjCount = Math.ceil(wordCount / 2);
+  const nounCount = Math.floor(wordCount / 2);
+  return adjCount * Math.log2(ADJECTIVES.length) + nounCount * Math.log2(NOUNS.length);
+}
+
+/**
  * Generates a passphrase with alternating adjective-noun pattern.
  * Odd positions (1st, 3rd, …) are adjectives; even positions (2nd, 4th, …) are nouns.
  * If wordCount is odd, the trailing word is an adjective.
