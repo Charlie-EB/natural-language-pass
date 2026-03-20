@@ -66,3 +66,65 @@ function generatePassphrase(wordCount, separator) {
   }
   return words.join(separator);
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const wordCountSlider = /** @type {HTMLInputElement} */ (document.getElementById("word-count"));
+  const wordCountLabel = document.getElementById("word-count-label");
+  const generateBtn = document.getElementById("generate-btn");
+  const passphraseDisplay = document.getElementById("passphrase-display");
+  const copyBtn = document.getElementById("copy-btn");
+  const copyFeedback = document.getElementById("copy-feedback");
+  const entropyDisplay = document.getElementById("entropy-display");
+
+  /** @type {string} */
+  var currentSeparator = " ";
+  var checkedRadio = document.querySelector('input[name="separator"]:checked');
+  if (checkedRadio) {
+    currentSeparator = /** @type {HTMLInputElement} */ (checkedRadio).value;
+  }
+
+  // Slider input: update label only (no auto-regenerate)
+  wordCountSlider.addEventListener("input", function () {
+    wordCountLabel.textContent = wordCountSlider.value + " words";
+  });
+
+  // Separator picker: radio buttons change event
+  document.querySelectorAll('input[name="separator"]').forEach(function (radio) {
+    radio.addEventListener("change", function () {
+      currentSeparator = /** @type {HTMLInputElement} */ (radio).value;
+    });
+  });
+
+  // Generate button click: generate passphrase and update display + entropy
+  generateBtn.addEventListener("click", function () {
+    var wordCount = parseInt(wordCountSlider.value, 10);
+    passphraseDisplay.textContent = generatePassphrase(wordCount, currentSeparator);
+    entropyDisplay.textContent = formatEntropy(wordCount);
+  });
+
+  // Copy button click: copy passphrase to clipboard with feedback
+  copyBtn.addEventListener("click", function () {
+    var text = passphraseDisplay.textContent || "";
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        copyFeedback.textContent = "Copied!";
+        setTimeout(function () {
+          copyFeedback.textContent = "";
+        }, 1500);
+      }).catch(function () {
+        copyFeedback.textContent = "Copy failed";
+        setTimeout(function () {
+          copyFeedback.textContent = "";
+        }, 1500);
+      });
+    } else {
+      copyFeedback.textContent = "Clipboard unavailable";
+      setTimeout(function () {
+        copyFeedback.textContent = "";
+      }, 1500);
+    }
+  });
+
+  // Auto-generate on page load with defaults
+  generateBtn.click();
+});

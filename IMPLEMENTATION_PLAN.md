@@ -21,12 +21,12 @@ All application source code lives in `src/`. Nothing has been implemented yet. T
 - [x] `calculateEntropy(wordCount)` — computes `Math.ceil(wordCount/2) * Math.log2(ADJECTIVES.length) + Math.floor(wordCount/2) * Math.log2(NOUNS.length)` bits
 - [x] `getStrengthLabel(bits)` — returns "Good" (bits < 60), "Strong" (60 <= bits < 80), "Very Strong" (80 <= bits < 100), "Excellent" (bits >= 100)
 - [x] Entropy display format: `🔒 {rounded bits} bits — {label}` (per `entropy-and-security.md` § Format)
-- [ ] UI wiring on `DOMContentLoaded`:
-  - [ ] Slider `input` event updates word-count label text (does NOT auto-regenerate passphrase)
-  - [ ] Generate button click calls `generatePassphrase()`, updates display element and entropy indicator
-  - [ ] Copy button click copies passphrase to clipboard via `navigator.clipboard.writeText()`, shows "Copied!" feedback for ~1.5s, then reverts; falls back gracefully if clipboard API is unavailable
-  - [ ] Separator picker (radio buttons) `change` event updates selected separator value
-  - [ ] Auto-generate on page load with defaults (5 words, space separator)
+- [x] UI wiring on `DOMContentLoaded`:
+  - [x] Slider `input` event updates word-count label text (does NOT auto-regenerate passphrase)
+  - [x] Generate button click calls `generatePassphrase()`, updates display element and entropy indicator
+  - [x] Copy button click copies passphrase to clipboard via `navigator.clipboard.writeText()`, shows "Copied!" feedback for ~1.5s, then reverts; falls back gracefully if clipboard API is unavailable
+  - [x] Separator picker (radio buttons) `change` event updates selected separator value
+  - [x] Auto-generate on page load with defaults (5 words, space separator)
 - Spec ref: `generation-algorithm.md`, `entropy-and-security.md`, `user-interface.md` § Behavior, `tech-architecture.md` § Type Safety
 
 ## Priority 3: Page Markup — `src/index.html`
