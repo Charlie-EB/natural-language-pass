@@ -1,3 +1,8 @@
+/* Light color scheme only — dark mode is a non-goal for v1 */
+:root {
+  color-scheme: light;
+}
+
 /* Base reset and defaults */
 *,
 *::before,
