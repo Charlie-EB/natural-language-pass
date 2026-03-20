@@ -56,6 +56,25 @@ All application source code lives in `src/`. Nothing has been implemented yet. T
 - [x] WCAG AA color contrast minimum (4.5:1 for normal text, 3:1 for large text)
 - Spec ref: `user-interface.md` § Visual Style, § Responsive Design, § Accessibility
 
+## Priority 5: Capitalize Toggle
+
+- [ ] Add `capitalizeWord(word)` function in `src/app.js` — returns word with first letter uppercased
+- [ ] Update `generatePassphrase()` to accept a `capitalize` boolean parameter; when true, apply `capitalizeWord()` to each word before joining
+- [ ] Add a checkbox input in `src/index.html` (id `capitalize`, label "Capitalize Words") in the options area near the separator picker
+- [ ] Wire up the checkbox in the `DOMContentLoaded` handler — read its checked state when generating
+- [ ] Style the checkbox in `src/style.css` to match the existing option controls
+- [ ] Default: unchecked (lowercase)
+- Spec ref: `generation-algorithm.md` § Capitalization, `user-interface.md` § Capitalize Toggle
+
+## Priority 6: Crack Time Estimate Display
+
+- [ ] Add `estimateCrackTime(bits)` function in `src/app.js` — computes `2^(bits-1) / 10_000_000_000` seconds, returns human-friendly string (e.g., "~4.6 years", "~19 million years")
+- [ ] Add `formatCrackTime(seconds)` helper to convert raw seconds into the best human-readable unit (seconds → minutes → hours → days → years → thousands/millions/billions/trillions/quadrillions of years)
+- [ ] Update `formatEntropy()` or generate button handler to include crack time in the entropy display area
+- [ ] Add a `#crack-time-display` element in `src/index.html` below the entropy indicator (subdued/secondary style, matching entropy display)
+- [ ] Style the crack time display in `src/style.css`
+- Spec ref: `entropy-and-security.md` § Crack Time Estimate
+
 ## Completed
 
 _(none yet)_

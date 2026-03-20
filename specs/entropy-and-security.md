@@ -117,8 +117,54 @@ The page may include a brief note (tooltip or footer text) explaining:
 
 This guidance is optional for v1 — the entropy display alone is the minimum requirement.
 
+## Crack Time Estimate
+
+### Purpose
+
+Display a human-friendly crack time alongside the entropy bits to help non-technical users understand passphrase strength. Inspired by [Hive Systems 2025 Password Table](https://www.hivesystems.com/blog/are-your-passwords-in-the-green).
+
+### Attack Model
+
+Assume a high-end consumer attack scenario:
+
+- **Hardware**: 12x NVIDIA RTX 5090 GPUs (Hive Systems 2025 reference)
+- **Hash target**: bcrypt with cost factor 10
+- **Rate**: ~10 billion guesses/second (generous upper bound to keep estimates conservative)
+- **Method**: brute-force over the full combinatorial space (no dictionary shortcuts — our passphrases use cryptographic randomness)
+
+Average crack time: `2^(bits-1) / guesses_per_second` (50% probability threshold).
+
+### Display Format
+
+Show the crack time below the entropy line in plain language:
+
+```
+🔒 57 bits — Good
+⏱️ ~4.6 years to crack
+```
+
+Use human-friendly units, rounded:
+- Seconds, minutes, hours, days for short times
+- Years, thousands of years, millions of years, billions of years for long times
+
+### Crack Times by Word Count
+
+| Words | Entropy | Approx. Crack Time (at 10B guesses/sec) |
+|-------|---------|----------------------------------------|
+| 5     | ~57 bits | ~4.6 years |
+| 6     | ~70 bits | ~18,700 years |
+| 7     | ~80 bits | ~19 million years |
+| 8     | ~93 bits | ~15 billion years |
+| 9     | ~103 bits | ~16 trillion years |
+| 10    | ~116 bits | ~13 quadrillion years |
+
+### Caveats
+
+- The assumed rate is deliberately generous (real bcrypt cracking is slower) to keep displayed times conservative
+- Actual crack time depends on the hash algorithm used by the service storing the password — we can't control that
+- These estimates assume the attacker knows the word lists and generation pattern (Kerckhoffs's principle)
+
 ## Non-Goals
 
 - No password strength estimation based on dictionary attacks or pattern matching (we use pure combinatorial entropy)
 - No comparison to other password types (e.g., "equivalent to a 12-character random password")
-- No time-to-crack estimates (these depend on attacker resources and become outdated)

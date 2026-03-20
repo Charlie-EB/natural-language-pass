@@ -102,9 +102,23 @@ function generatePassphrase(wordCount, separator) {
 }
 ```
 
+## Capitalization
+
+The user can toggle capitalization of each word:
+
+- **Off** (default): all words are lowercase — e.g., `sleepy bookmark faded`
+- **On**: each word has its first letter capitalized — e.g., `Sleepy Bookmark Faded`
+
+Capitalization is applied after word selection, before joining with the separator. It does **not** affect entropy — the attacker is assumed to know the capitalization rule (Kerckhoffs's principle), so it is a cosmetic option only.
+
+```js
+function capitalizeWord(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+}
+```
+
 ## Non-Goals
 
-- No uppercase/lowercase transformation options in v1
 - No digit or symbol injection
 - No custom word list upload
 - No server-side generation

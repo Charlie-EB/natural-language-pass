@@ -15,7 +15,8 @@ The page consists of a single centered card/panel containing, from top to bottom
 1. **Title/heading** — App name and brief tagline
 2. **Word count slider** — Range input with label showing current value
 3. **Separator picker** — Small set of options for the separator character
-4. **Generate button** — Primary action
+4. **Capitalize toggle** — Checkbox to capitalize each word
+5. **Generate button** — Primary action
 5. **Passphrase display** — Large, readable output area
 6. **Copy button** — Copies passphrase to clipboard
 7. **Entropy indicator** — Shows strength/bits of entropy (see `entropy-and-security.md`)
@@ -36,6 +37,15 @@ The page consists of a single centered card/panel containing, from top to bottom
 - Options: `Space`, `Hyphen`, `Period`, `Underscore`, `None`
 - Default: Space
 - Visual indication of which is selected
+
+### Capitalize Toggle
+
+- A checkbox or toggle switch
+- Label: "Capitalize Words"
+- Default: off (unchecked)
+- When enabled, each word in the passphrase starts with an uppercase letter
+- Cosmetic only — does not affect entropy calculation or strength display
+- Placed alongside the separator picker as a generation option
 
 ### Generate Button
 
