@@ -100,6 +100,7 @@ input[type="range"]:focus-visible {
   border-radius: 6px;
   padding: 0.75rem 1rem;
   margin-bottom: 1.25rem;
+  min-width: 0;
 }
 
 .separator-picker legend {
@@ -175,6 +176,7 @@ input[type="range"]:focus-visible {
 .copy-row {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.75rem;
   margin-bottom: 1rem;
 }

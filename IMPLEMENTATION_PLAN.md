@@ -48,7 +48,7 @@ All application source code lives in `src/`. Nothing has been implemented yet. T
 
 - [x] Clean, minimal aesthetic; no framework CSS
 - [x] Single centered card with `max-width` constraint (~500-600px), comfortable padding, slight shadow or border
-- [ ] Responsive: usable at 320px+, single-column, no horizontal scroll
+- [x] Responsive: usable at 320px+, single-column, no horizontal scroll
 - [ ] Touch-friendly slider and buttons (adequate tap targets, min 44px height)
 - [ ] Monospace font for passphrase display, sufficient contrast
 - [ ] Visual feedback: selected separator state (radio checked styling), copy button "Copied!" state
