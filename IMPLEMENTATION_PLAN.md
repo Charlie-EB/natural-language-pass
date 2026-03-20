@@ -71,7 +71,7 @@ All application source code lives in `docs/`. Nothing has been implemented yet. 
 - [x] Replace `estimateCrackTime()` and `formatCrackTime()` with `getStrengthDescription(wordCount)` in `docs/app.js` — static map from word count (5–10) to a plain-language threat tier string
 - [x] Update the generate button handler to display the strength description in `#crack-time-display`
 - [x] Update the display element text/icon (use shield icon instead of timer: `🛡️`)
-- [ ] Style the strength description in `docs/style.css` — subdued/secondary style, matching entropy display
+- [x] Style the strength description in `docs/style.css` — subdued/secondary style, matching entropy display
 - Spec ref: `entropy-and-security.md` § Strength Description
 
 ## Completed

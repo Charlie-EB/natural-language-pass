@@ -256,6 +256,13 @@ input[type="range"]:focus-visible {
   color: #666;
 }
 
+/* Strength description — secondary to entropy line */
+#crack-time-display {
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  color: #767676;
+}
+
 .joke {
   margin-top: 50px
 }
