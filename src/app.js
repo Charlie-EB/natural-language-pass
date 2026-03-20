@@ -48,6 +48,30 @@ function formatEntropy(wordCount) {
 }
 
 /**
+ * Estimates the time to crack a passphrase with the given entropy,
+ * assuming 10 billion guesses per second (bcrypt, 12× RTX 5090).
+ * @param {number} bits - Entropy in bits.
+ * @returns {string} Human-friendly crack time, e.g. "~4.6 years"
+ */
+function estimateCrackTime(bits) {
+  var seconds = Math.pow(2, bits - 1) / 10000000000;
+  if (seconds < 60) return "~" + seconds.toFixed(1) + " seconds";
+  var minutes = seconds / 60;
+  if (minutes < 60) return "~" + minutes.toFixed(1) + " minutes";
+  var hours = minutes / 60;
+  if (hours < 24) return "~" + hours.toFixed(1) + " hours";
+  var days = hours / 24;
+  if (days < 365.25) return "~" + days.toFixed(1) + " days";
+  var years = days / 365.25;
+  if (years < 1000) return "~" + years.toFixed(1) + " years";
+  if (years < 1000000) return "~" + (years / 1000).toFixed(1) + " thousand years";
+  if (years < 1000000000) return "~" + (years / 1000000).toFixed(1) + " million years";
+  if (years < 1000000000000) return "~" + (years / 1000000000).toFixed(1) + " billion years";
+  if (years < 1000000000000000) return "~" + (years / 1000000000000).toFixed(1) + " trillion years";
+  return "~" + (years / 1000000000000000).toFixed(1) + " quadrillion years";
+}
+
+/**
  * Returns a word with its first letter uppercased.
  * @param {string} word
  * @returns {string}
