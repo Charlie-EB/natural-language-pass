@@ -14,7 +14,7 @@ The app is a static site built with vanilla HTML, CSS, and JavaScript. No framew
 |-----------|--------------------|
 | Markup    | HTML5              |
 | Styling   | Plain CSS          |
-| Logic     | Vanilla JavaScript |
+| Logic     | Vanilla JavaScript (JSDoc `@ts-check` for type safety) |
 | Randomness| Web Crypto API     |
 | Build     | None               |
 
@@ -60,6 +60,29 @@ Scripts are loaded via standard `<script>` tags in order:
 
 `words.js` exposes `ADJECTIVES` and `NOUNS` as global constants. `app.js` references them directly. No module bundler, no ES modules (to avoid CORS issues when opening from filesystem).
 
+## Type Safety
+
+All `.js` files use JSDoc annotations with `// @ts-check` at the top. This provides editor-time type checking (VS Code, etc.) with zero build step — the browser runs the files as-is.
+
+```js
+// @ts-check
+
+/** @type {string[]} */
+const ADJECTIVES = ["curly", "faded", ...];
+
+/**
+ * @param {number} max
+ * @returns {number}
+ */
+function secureRandomIndex(max) {
+  const array = new Uint32Array(1);
+  crypto.getRandomValues(array);
+  return Math.floor((array[0] / 2 ** 32) * max);
+}
+```
+
+No `tsconfig.json` or TypeScript compiler is required. Type annotations are purely for developer experience.
+
 ## Deployment
 
 ### Requirements
@@ -94,7 +117,7 @@ The existing files (`nlp.html`, `nlp.py`, `nlp.sql`, PDFs) are preserved in the 
 - No build step (no Webpack, Vite, Rollup, etc.)
 - No package manager (no npm, yarn, etc.)
 - No CSS preprocessor (no Sass, Less, etc.)
-- No TypeScript
+- No TypeScript compiler (JSDoc `@ts-check` annotations provide type safety without a build step)
 - No testing framework in v1 (manual browser testing is sufficient for this scope)
 - No CI/CD pipeline
 - No server-side rendering
