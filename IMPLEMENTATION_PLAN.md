@@ -53,7 +53,7 @@ All application source code lives in `src/`. Nothing has been implemented yet. T
 - [x] Monospace font for passphrase display, sufficient contrast
 - [x] Visual feedback: selected separator state (radio checked styling), copy button "Copied!" state
 - [x] Light color scheme only (dark mode is non-goal for v1)
-- [ ] WCAG AA color contrast minimum (4.5:1 for normal text, 3:1 for large text)
+- [x] WCAG AA color contrast minimum (4.5:1 for normal text, 3:1 for large text)
 - Spec ref: `user-interface.md` § Visual Style, § Responsive Design, § Accessibility
 
 ## Completed

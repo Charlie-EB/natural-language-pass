@@ -214,6 +214,7 @@ input[type="range"]:focus-visible {
 
 #copy-btn:active {
   background: #dbeafe;
+  color: #1d4ed8;
 }
 
 #copy-btn:focus-visible {
@@ -223,7 +224,7 @@ input[type="range"]:focus-visible {
 
 #copy-feedback {
   font-size: 0.85rem;
-  color: #16a34a;
+  color: #15803d;
   font-weight: 500;
 }
 
