@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
     entropyDisplay.textContent = formatEntropy(wordCount);
     if (crackTimeDisplay) {
       var bits = calculateEntropy(wordCount);
-      crackTimeDisplay.textContent = "Crack time: " + estimateCrackTime(bits);
+      crackTimeDisplay.textContent = "\u23F1\uFE0F " + estimateCrackTime(bits) + " to crack";
     }
   });
 
