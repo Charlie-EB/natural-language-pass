@@ -50,7 +50,7 @@ All application source code lives in `src/`. Nothing has been implemented yet. T
 - [x] Single centered card with `max-width` constraint (~500-600px), comfortable padding, slight shadow or border
 - [x] Responsive: usable at 320px+, single-column, no horizontal scroll
 - [x] Touch-friendly slider and buttons (adequate tap targets, min 44px height)
-- [ ] Monospace font for passphrase display, sufficient contrast
+- [x] Monospace font for passphrase display, sufficient contrast
 - [ ] Visual feedback: selected separator state (radio checked styling), copy button "Copied!" state
 - [ ] Light color scheme only (dark mode is non-goal for v1)
 - [ ] WCAG AA color contrast minimum (4.5:1 for normal text, 3:1 for large text)
