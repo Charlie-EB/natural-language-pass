@@ -9,11 +9,13 @@ All application source code lives in `src/`. Nothing has been implemented yet. T
 - Source data confirmed: `nlp.html` line 12 contains `var adjective_words` (1,296 entries) and line 14 contains `var noun_words` (7,776 entries) — extract and rename
 - After extraction, validate array lengths: `ADJECTIVES.length === 1296` and `NOUNS.length === 7776`
 - Arrays are plain JS constants (no ES modules) loaded via `<script>` tag before `app.js`
+- Add `// @ts-check` at top of file and JSDoc `/** @type {string[]} */` annotation on each array
 - Use a script to parse the arrays from `nlp.html` (e.g., Python/Node to extract JSON arrays from the var declarations)
-- Spec ref: `generation-algorithm.md` § Word Lists, `tech-architecture.md` § Module Strategy
+- Spec ref: `generation-algorithm.md` § Word Lists, `tech-architecture.md` § Module Strategy, § Type Safety
 
 ## Priority 2: Core Logic — `src/app.js`
 
+- Add `// @ts-check` at top of file and JSDoc annotations (`@param`, `@returns`) on all functions
 - `secureRandomIndex(max)` — uses `crypto.getRandomValues()` with `Uint32Array(1)`; `Math.random()` is forbidden; returns `Math.floor((array[0] / 2**32) * max)`
 - `generatePassphrase(wordCount, separator)` — alternating adjective-noun pattern: adj at odd positions (1st, 3rd, …), noun at even positions (2nd, 4th, …); if N is odd, trailing word is an adjective
 - `calculateEntropy(wordCount)` — computes `Math.ceil(wordCount/2) * Math.log2(ADJECTIVES.length) + Math.floor(wordCount/2) * Math.log2(NOUNS.length)` bits
@@ -25,7 +27,7 @@ All application source code lives in `src/`. Nothing has been implemented yet. T
   - Copy button click copies passphrase to clipboard via `navigator.clipboard.writeText()`, shows "Copied!" feedback for ~1.5s, then reverts; falls back gracefully if clipboard API is unavailable
   - Separator picker (radio buttons) `change` event updates selected separator value
   - Auto-generate on page load with defaults (5 words, space separator)
-- Spec ref: `generation-algorithm.md`, `entropy-and-security.md`, `user-interface.md` § Behavior
+- Spec ref: `generation-algorithm.md`, `entropy-and-security.md`, `user-interface.md` § Behavior, `tech-architecture.md` § Type Safety
 
 ## Priority 3: Page Markup — `src/index.html`
 
