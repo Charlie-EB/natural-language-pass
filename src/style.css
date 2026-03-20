@@ -1,0 +1,240 @@
+/* Base reset and defaults */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #f5f5f5;
+  color: #1a1a1a;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* Card container */
+.card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
+  max-width: 540px;
+  width: 100%;
+  padding: 2rem;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  color: #1a1a1a;
+}
+
+.tagline {
+  text-align: center;
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Word count slider */
+.control-group {
+  margin-bottom: 1.25rem;
+}
+
+.control-group label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #ddd;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #2563eb;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #2563eb;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+input[type="range"]:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 4px;
+}
+
+/* Separator picker */
+.separator-picker {
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.separator-picker legend {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #333;
+  padding: 0 0.25rem;
+}
+
+.separator-picker label {
+  display: inline-block;
+  margin-right: 1rem;
+  font-size: 0.9rem;
+  color: #444;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  min-height: 44px;
+  line-height: 44px;
+}
+
+.separator-picker input[type="radio"] {
+  margin-right: 0.25rem;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+/* Generate button */
+#generate-btn {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: #2563eb;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  min-height: 44px;
+  margin-bottom: 1.25rem;
+}
+
+#generate-btn:hover {
+  background: #1d4ed8;
+}
+
+#generate-btn:active {
+  background: #1e40af;
+}
+
+#generate-btn:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* Passphrase display */
+#passphrase-display {
+  font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", "Courier New", monospace;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  word-break: break-all;
+  background: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 1rem;
+  min-height: 3.5rem;
+  margin-bottom: 0.75rem;
+  color: #1a1a1a;
+  user-select: all;
+}
+
+/* Copy row */
+.copy-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+#copy-btn {
+  padding: 0.5rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2563eb;
+  background: #fff;
+  border: 1px solid #2563eb;
+  border-radius: 6px;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+#copy-btn:hover {
+  background: #eff6ff;
+}
+
+#copy-btn:active {
+  background: #dbeafe;
+}
+
+#copy-btn:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+#copy-feedback {
+  font-size: 0.85rem;
+  color: #16a34a;
+  font-weight: 500;
+}
+
+/* Entropy display */
+.entropy {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  body {
+    padding: 0.5rem;
+    align-items: flex-start;
+    padding-top: 1rem;
+  }
+
+  .card {
+    padding: 1.25rem;
+  }
+
+  .separator-picker label {
+    display: block;
+    margin-right: 0;
+  }
+
+  #passphrase-display {
+    font-size: 1rem;
+  }
+}
