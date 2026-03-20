@@ -22,13 +22,12 @@ The app is a static site built with vanilla HTML, CSS, and JavaScript. No framew
 
 ```
 nl-passwords/
-├── index.html          # Main (and only) page
-├── css/
-│   └── style.css       # All styles
-├── js/
+├── src/
+│   ├── index.html      # Main (and only) page
+│   ├── style.css       # All styles
 │   ├── words.js        # ADJECTIVES and NOUNS arrays
 │   └── app.js          # Generation logic, UI wiring, entropy calc
-├── specs/              # Requirement specs (this directory)
+├── specs/              # Requirement specs
 │   ├── generation-algorithm.md
 │   ├── user-interface.md
 │   ├── entropy-and-security.md
@@ -48,13 +47,15 @@ The existing `nlp.html` is a single 88KB file with everything inlined. The new a
 - **`style.css`** — Styles separated from markup for maintainability.
 - **`index.html`** — Clean markup with `<script>` and `<link>` tags.
 
+All source files live in `src/` to keep the project root clean.
+
 ## Module Strategy
 
 Scripts are loaded via standard `<script>` tags in order:
 
 ```html
-<script src="js/words.js"></script>
-<script src="js/app.js"></script>
+<script src="words.js"></script>
+<script src="app.js"></script>
 ```
 
 `words.js` exposes `ADJECTIVES` and `NOUNS` as global constants. `app.js` references them directly. No module bundler, no ES modules (to avoid CORS issues when opening from filesystem).
