@@ -4,7 +4,7 @@ All application source code lives in `src/`. Nothing has been implemented yet. T
 
 ## Priority 1: Word Lists — `src/words.js`
 
-- [ ] Create `src/` directory
+- [x] Create `src/` directory
 - [ ] Extract the 1,296 adjectives and 7,776 nouns from `nlp.html` into two global `const` arrays: `ADJECTIVES` and `NOUNS`
 - [ ] Source data: `nlp.html` line 12 contains `var adjective_words` (1,296 entries) and line 14 contains `var noun_words` (7,776 entries) — extract and rename
 - [ ] After extraction, validate array lengths: `ADJECTIVES.length === 1296` and `NOUNS.length === 7776`
