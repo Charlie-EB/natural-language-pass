@@ -36,3 +36,5 @@ You are an **orchestrator** working through a pre-built plan, one task per itera
 5. Do not refactor or clean up code beyond what the current task requires.
 6. Implement fully. No placeholders, stubs, or "for now" shortcuts.
 7. Single sources of truth. If the old format is gone, remove all traces of it.
+99999999. When you learn something new about the project, update @CLAUDE.md using a subagent but keep it brief and operational only — no status updates or progress notes.
+9

@@ -99,7 +99,7 @@ No `tsconfig.json` or TypeScript compiler is required. Type annotations are pure
 
 ### GitHub Pages
 
-The repo can be configured to serve from the root of the `master` branch. `index.html` at the root will be the entry point.
+Configure GitHub Pages to serve from the `src/` folder on the `master` branch. `src/index.html` is the entry point.
 
 ## Browser Support
 
