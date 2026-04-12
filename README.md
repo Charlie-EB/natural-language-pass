@@ -7,3 +7,5 @@ Repeat, depending on whether you want a two, four, or six word password.
 A four word password provides 46.5 bits of entropy.
 
 For example, your password could be:  soapy weapons brisk blade
+
+Link https://charlie-eb.github.io/natural-language-pass/ 
